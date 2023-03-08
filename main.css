@@ -2,12 +2,23 @@ body {
     text-align: center;
 }
 
-h1 {
+h2 {
     text-align: center;
     z-index: 1;
     position: relative;
     color: aliceblue;
 }
+
+div.row, div.leadForm {
+    position: relative;
+    z-index: 1;
+}
+
+p, label, label.form-label {
+    color: aliceblue;
+}
+
+
 svg {
     position: absolute;
     top: 0;

@@ -1,63 +1,215 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="main.css"/>
+    <link rel="stylesheet" href="main.css" />
     <title>APCAM: Lead Form</title>
 </head>
+
 <body>
-    <h1>TBD: Add lead form here</h1>
-    <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-		xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="100%" height="100%" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMax slice">
-		<defs>
-			<linearGradient id="bg">
-				<stop offset="0%" style="stop-color:rgba(130, 158, 249, 0.06)"></stop>
-				<stop offset="50%" style="stop-color:rgba(76, 190, 255, 0.6)"></stop>
-				<stop offset="100%" style="stop-color:rgba(115, 209, 72, 0.2)"></stop>
-			</linearGradient>
-			<path id="wave" fill="url(#bg)" d="M-363.852,502.589c0,0,236.988-41.997,505.475,0
+    <h2>APCAM Test Environment: Lead Form</h2>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="leadForm">
+                    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+                        rel="stylesheet"
+                        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+                        crossorigin="anonymous">
+                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+                        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+                        crossorigin="anonymous"></script>
+                    <form id="lead-form" class="container">
+                        <div class="mb-3">
+                            <div class="form-row" style="display: flex; justify-content: space-evenly;">
+                                <div class="mb-3 col-md-4">
+                                    <label for="firstName" class="form-label">First name</label>
+                                    <input type="text" class="form-control" id="firstName" name="firstName"
+                                        placeholder="First name">
+                                </div>
+                                <div class="mb-3 col-md-4">
+                                    <label for="lastName" class="form-label">Last name</label>
+                                    <input type="text" class="form-control" id="lastName" name="lastName"
+                                        placeholder="Last name">
+                                </div>
+                            </div>
+                            <div class="form-row" style="display: flex; justify-content:center;">
+                                <div class="mb-3 col-md-4">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="email" name="email"
+                                        placeholder="name@mail.com">
+                                </div>
+                            </div>
+                        </div>
+                        <div id="companyType" class="form-row" style="display: flex; justify-content:center;">
+                            <div class="mb-3 col-md-4">
+                                <label for="clientType" class="form-label">Legal status</label>
+                                <select id="clientType" name="clientType" class="form-control">
+                                    <option selected="">Person</option>
+                                    <option>Company</option>
+                                </select>
+                            </div>
+                            <div id="compNameDiv" class="mb-3 col-md-4" style="display:none;">
+                                <label for="companyName" class="form-label">Company name</label>
+                                <input type="text" class="form-control" id="companyName" name="companyName">
+                            </div>
+                        </div>
+
+                        <script>
+                            const el = document.getElementById('clientType');
+
+                            const box = document.getElementById('compNameDiv');
+
+                            const companyTypeRow = document.getElementById('companyType');
+
+                            el.addEventListener('change', function handleChange(event) {
+                                if (event.target.value === 'Company') {
+                                    box.style.display = 'block';
+                                    companyTypeRow.style.justifyContent = 'space-evenly';
+                                } else {
+                                    box.style.display = 'none';
+                                    companyTypeRow.style.justifyContent = 'center';
+                                }
+                            });
+                        </script>
+
+                        <!--Section for case specific attributes-->
+
+                        <div class="form-row" style="display: flex; justify-content:space-evenly;">
+
+
+                            <div class="mb-3 col-md-4">
+                                <label for="Number of trucks" class="form-label">Number of trucks: </label>
+                                <input class="form-control" type="0" maxlength="200" id="Number of trucks"
+                                    name="custom__Number of trucks" placeholder="">
+                            </div>
+
+
+                            <div class="mb-3 col-md-4">
+                                <label for="I have bought:" class="form-label">I have bought:: </label>
+
+                                <select class="form-control" name="custom__I have bought:">
+                                    <option id="only new trucks" value="option0">only new trucks</option>
+                                    <option id="new and used trucks" value="option1">new and used trucks</option>
+                                    <option id="only used trucks" value="option2">only used trucks</option>
+
+                                </select>
+                            </div>
+
+                        </div>
+                        <div class="form-row" style="display: flex; justify-content:center;">
+
+                            <div class="mb-3 col-md-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox"
+                                        id="All trucks were bought between 2005 and 2015"
+                                        name="custom__All trucks were bought between 2005 and 2015">
+
+                                    <label class="form-check-label"
+                                        for="All trucks were bought between 2005 and 2015">All
+                                        trucks were
+                                        bought between 2005 and 2015</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row" style="display: flex; justify-content:center;">
+
+                            <!-- Section for GDPR consent -->
+                            <div class="mb-3 col-md-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="gdprCheck">
+                                    <p>I agree to <a href="https://litfin.capital/privacy-policy/"
+                                            rel="noopener noreferrer" target="_blank">privacy policy</a>.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row" style="display: flex; justify-content:center;">
+                            <div class="mb-3 col-md-4">
+                                <button type="submit" id="submitBtn" class="btn btn-primary px-4"
+                                    disabled>Submit</button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <script>
+                        const checker = document.getElementById('gdprCheck');
+                        const sendbtn = document.getElementById('submitBtn');
+                        checker.onchange = function () {
+                            sendbtn.disabled = !this.checked;
+                        };
+
+                        const form = document.getElementById('lead-form');
+
+                        form.addEventListener('submit', function (e) {
+                            e.preventDefault();
+                            const formData = new FormData(form);
+
+                            const objectData = {
+                                userLanguage: "en",
+                                caseSpecificFields: {}
+                            };
+
+                            formData.forEach(function (value, key) {
+                                if (key.startsWith("custom__")) {
+                                    const customKey = key.slice(8);
+                                    objectData.caseSpecificFields[customKey] = value;
+                                } else {
+                                    objectData[key] = value;
+                                }
+                            });
+
+                            const jsonData = JSON.stringify(objectData);
+                            const submitUrl = "https://apcam-webapp.azurewebsites.net/api/client-registrations/public/lead-form-registration/case/2";
+
+                            fetch(submitUrl, {
+                                method: 'POST',
+                                headers: {
+                                    'Accept': 'application/json',
+                                    'Content-Type': 'application/json'
+                                },
+                                body: jsonData,
+                            }).then(res => res.json())
+                                .then(data => console.log(data))
+                        });
+                    </script>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+        width="100%" height="100%" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMax slice">
+        <defs>
+            <linearGradient id="bg">
+                <stop offset="0%" style="stop-color:rgba(130, 158, 249, 0.06)"></stop>
+                <stop offset="50%" style="stop-color:rgba(76, 190, 255, 0.6)"></stop>
+                <stop offset="100%" style="stop-color:rgba(115, 209, 72, 0.2)"></stop>
+            </linearGradient>
+            <path id="wave" fill="url(#bg)" d="M-363.852,502.589c0,0,236.988-41.997,505.475,0
 	s371.981,38.998,575.971,0s293.985-39.278,505.474,5.859s493.475,48.368,716.963-4.995v560.106H-363.852V502.589z" />
-		</defs>
-		<g>
-			<use xlink:href='#wave' opacity=".3">
-				<animateTransform
-          attributeName="transform"
-          attributeType="XML"
-          type="translate"
-          dur="10s"
-          calcMode="spline"
-          values="270 230; -334 180; 270 230"
-          keyTimes="0; .5; 1"
-          keySplines="0.42, 0, 0.58, 1.0;0.42, 0, 0.58, 1.0"
-          repeatCount="indefinite" />
-			</use>
-			<use xlink:href='#wave' opacity=".6">
-				<animateTransform
-          attributeName="transform"
-          attributeType="XML"
-          type="translate"
-          dur="8s"
-          calcMode="spline"
-          values="-270 230;243 220;-270 230"
-          keyTimes="0; .6; 1"
-          keySplines="0.42, 0, 0.58, 1.0;0.42, 0, 0.58, 1.0"
-          repeatCount="indefinite" />
-			</use>
-			<use xlink:href='#wave' opacty=".9">
-				<animateTransform
-          attributeName="transform"
-          attributeType="XML"
-          type="translate"
-          dur="6s"
-          calcMode="spline"
-          values="0 230;-140 200;0 230"
-          keyTimes="0; .4; 1"
-          keySplines="0.42, 0, 0.58, 1.0;0.42, 0, 0.58, 1.0"
-          repeatCount="indefinite" />
-			</use>
-		</g>
-	</svg>
+        </defs>
+        <g>
+            <use xlink:href='#wave' opacity=".3">
+                <animateTransform attributeName="transform" attributeType="XML" type="translate" dur="10s"
+                    calcMode="spline" values="270 230; -334 180; 270 230" keyTimes="0; .5; 1"
+                    keySplines="0.42, 0, 0.58, 1.0;0.42, 0, 0.58, 1.0" repeatCount="indefinite" />
+            </use>
+            <use xlink:href='#wave' opacity=".6">
+                <animateTransform attributeName="transform" attributeType="XML" type="translate" dur="8s"
+                    calcMode="spline" values="-270 230;243 220;-270 230" keyTimes="0; .6; 1"
+                    keySplines="0.42, 0, 0.58, 1.0;0.42, 0, 0.58, 1.0" repeatCount="indefinite" />
+            </use>
+            <use xlink:href='#wave' opacty=".9">
+                <animateTransform attributeName="transform" attributeType="XML" type="translate" dur="6s"
+                    calcMode="spline" values="0 230;-140 200;0 230" keyTimes="0; .4; 1"
+                    keySplines="0.42, 0, 0.58, 1.0;0.42, 0, 0.58, 1.0" repeatCount="indefinite" />
+            </use>
+        </g>
+    </svg>
 </body>
+
 </html>
